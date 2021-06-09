@@ -1,6 +1,6 @@
 exports.Livre = class {
-    constructor(idISBN, titre, format) {
-        this.idISBN = idISBN;
+    constructor(numISBN, titre, format) {
+        this.numISBN = numISBN;
         this.titre  = titre;
         this.format = format;
     }
