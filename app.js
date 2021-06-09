@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const home = require('./routes/home.route');
 const personne = require('./routes/personne.route');
 const adresse = require('./routes/adresse.route');
 const connexion = require('./routes/connexion.route');
@@ -14,6 +14,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use('/home', home);
 app.use('/connexion', connexion);
 app.use('/personne', personne);
 app.use('/adresse', adresse);
