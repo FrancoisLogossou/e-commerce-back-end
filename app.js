@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const home = require('./routes/home.route');
+const recherche = require('./routes/recherche.route');
 const personne = require('./routes/personne.route');
 const adresse = require('./routes/adresse.route');
 const connexion = require('./routes/connexion.route');
+const detailArticle = require('./routes/detail-article.route');
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,6 +18,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/home', home);
+app.use('/detailarticle', detailArticle);
+app.use('/recherche', recherche);
 app.use('/connexion', connexion);
 app.use('/personne', personne);
 app.use('/adresse', adresse);
