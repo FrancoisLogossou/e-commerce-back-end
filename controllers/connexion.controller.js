@@ -1,13 +1,16 @@
-const personne = require("../models/personne");
-const personneDao = require('../dao/personne.dao');
+const user = require("../models/personne");
+const userDao = require('../dao/personne.dao');
 
 exports.connexion = (req, res, next) => {
-    const p = new personne.Personne(
-        req.body.numUser,
-        req.body.nomUser,
-        req.body.prenomUser,
-    );
-    personneDao.getOneByUsernameAndPassword(p.nomUser, p.prenomUser)
+    const u = new user.Personne(
+      req.body.idPersonne,
+      req.body.nomPersonne,
+      req.body.prenomPersonne,
+      req.body.emailPersonne,
+      req.body.mdpPersonne,
+      req.body.typePersonne, 
+    )
+    userDao.getOneByEmailAndPassword(u.emailPersonne, u.mdpPersonne)
         .then(result => {
                 return res.status(200).json(result[0]);
         })

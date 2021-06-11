@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const home = require('./routes/home.route');
 const recherche = require('./routes/recherche.route');
-const personne = require('./routes/personne.route');
+const user = require('./routes/user.route');
 const adresse = require('./routes/adresse.route');
 const connexion = require('./routes/connexion.route');
 const detailArticle = require('./routes/detail-article.route');
@@ -21,7 +21,7 @@ app.use('/home', home);
 app.use('/detailarticle', detailArticle);
 app.use('/recherche', recherche);
 app.use('/connexion', connexion);
-app.use('/personne', personne);
+app.use('/user', user);
 app.use('/adresse', adresse);
 app.all('/*', (req, res) => {
     res
