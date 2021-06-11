@@ -40,11 +40,11 @@ exports.add = (p) => {
 //         });
 //     });
 // };
-// exports.getOneByUsernameAndPassword = (nomUser, prenomUser) => {
-//     return new Promise((resolve, reject) => {
-//         const req = connection.query("SELECT * FROM user WHERE nomUser  = ? AND prenomUser = ? ", [nomUser, prenomUser], (err, result) => {
-//             console.log(req.sql)
-//             err  ? reject(err) : resolve(result);
-//         });
-//     });
-// };
+exports.getOneByEmailAndPassword = (emailUser, motdepasseUser) => {
+    return new Promise((resolve, reject) => {
+        const req = connection.query("SELECT * FROM user WHERE emailUser  = ? AND motDePasseUser = ? ", [emailUser, motdepasseUser], (err, result) => {
+            console.log(req.sql)
+            err  ? reject(err) : resolve(result);
+        });
+    });
+};
