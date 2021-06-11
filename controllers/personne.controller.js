@@ -1,4 +1,4 @@
-const user = require("../models/personne");
+const personne = require("../models/personne");
 const personneDao = require('../dao/personne.dao');
 const personneAdresseDao = require('../dao/personne-adresse.dao');
 const adresseDao = require('../dao/adresse.dao');
