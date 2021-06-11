@@ -1,4 +1,4 @@
-const user = require("../models/personne");
+const personne = require("../models/personne");
 const personneDao = require('../dao/personne.dao');
 const personneAdresseDao = require('../dao/personne-adresse.dao');
 const adresseDao = require('../dao/adresse.dao');
@@ -19,22 +19,14 @@ exports.getAll = async (req, res, next) => {
     }
     res.status(200).json(personnes);
 }
-exports.getOneById = async (req, res, next) => {
-    const id = parseInt(req.params.id);
-    let personnes = await personneDao.getOneById(id).catch(err => {
+exports.getOneByEmail = async (req, res, next) => {
+    const email = req.params.emailPersonne;
+    let personne = await personneDao.getOneByEmail(email).catch(err => {
         return res.status(500).json({
             error: `Aucune personne avec l'identifiant ${id}`
         })
     });
-    let p = personnes[0];
-    p.adresses = await personneAdresseDao.getAllAdressesOfPersonne(p.num)
-        .catch(err => {
-            res.status(500).json({
-                error: `problème de récupération d'adresses : ${err}`
-            });
-        });
-
-    res.status(200).json(p);
+    res.status(200).json(personne);
 }
 exports.getAdressesByIdPersonne = (req, res, next) => {
     const id = parseInt(req.params.idUser);
@@ -57,7 +49,7 @@ exports.getAdresseByIdPersonne = (req, res, next) => {
             });
         });
 }
-exports.add = (req, res, next) => {
+exports.add = async (req, res, next) => {
     const p = new personne.Personne(
         req.body.idPersonne,
         req.body.nomPersonne,
@@ -65,17 +57,16 @@ exports.add = (req, res, next) => {
         req.body.emailPersonne,
         req.body.mdpPersonne
     );
-    personneDao.add(p)
+    await personneDao.add(p)
         .then(result => {
             p.idPersonne = result.insertId;
-            console.log(p);
             return res.status(201).json(p);
         })
         .catch(err => {
-        return res.status(500).json({
+            return res.status(500).json({
             error: `problème d'insertion dans personne: ${err}`
+            });
         });
-    });
 }
 exports.edit = async (req, res, next) => {
     const id = parseInt(req.params.id);
