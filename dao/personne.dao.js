@@ -18,10 +18,10 @@ const connection = require('../database.js');
 // };
 exports.add = (p) => {
     return new Promise((resolve, reject) => {
-        const req = connection.query("INSERT INTO user SET nomUser = ?, prenomUser = ?", [p.nomUser, p.prenomUser], (err, result) => {
+        const req = connection.query("INSERT INTO user SET nomUser = ?, prenomUser = ?, emailUser = ?, motDePasseUser = ?", [p.nomPersonne, p.prenomPersonne, p.emailPersonne, p.mdpPersonne], (err, result) => {
                 console.log(req.sql)
                 err ? reject(err) : resolve(result);
-            });
+        });
     });
 };
 // exports.edit = (id, p) => {
