@@ -1,4 +1,4 @@
-const personne = require("../models/personne");
+const user = require("../models/personne");
 const personneDao = require('../dao/personne.dao');
 const personneAdresseDao = require('../dao/personne-adresse.dao');
 const adresseDao = require('../dao/adresse.dao');
@@ -6,7 +6,7 @@ const adresseDao = require('../dao/adresse.dao');
 exports.getAll = async (req, res, next) => {
     let personnes = await personneDao.getAll().catch(err => {
         return res.status(500).json({
-            error: `problème de récupération de personnes: ${err}`
+            error: `problème de récupération d'Utilisateurs: ${err}`
         })
     });
     for (let p of personnes) {
@@ -37,7 +37,7 @@ exports.getOneById = async (req, res, next) => {
     res.status(200).json(p);
 }
 exports.getAdressesByIdPersonne = (req, res, next) => {
-    const id = parseInt(req.params.idPersonne);
+    const id = parseInt(req.params.idUser);
     personneAdresseDao.getAllAdressesOfPersonne(id)
         .then(result => res.status(200).json(result))
         .catch(err => {
