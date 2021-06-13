@@ -19,7 +19,7 @@ exports.getOneById = (id) => {
 
 exports.add = (a) => {
     return new Promise((resolve, reject) => {
-        const req = connection.query("INSERT INTO adresse SET ville = ?, codePostal = ?, rue = ?", [a.ville, a.codePostal, a.rue], (err, result) => {
+        const req = connection.query("INSERT INTO adresse SET rue = ?, complementAdresse = ?, codePostal = ?, ville = ?", [a.rue ,a.compltAdr,a.codePostal,a.ville ], (err, result) => {
             console.log(req.sql)
             err ? reject(err) : resolve(result);
         });

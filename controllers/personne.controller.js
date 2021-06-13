@@ -58,15 +58,11 @@ exports.add = async (req, res, next) => {
         req.body.mdpPersonne
     );
     await personneDao.add(p)
-        .then(result => {
-            p.idPersonne = result.insertId;
-            return res.status(201).json(p);
-        })
         .catch(err => {
             return res.status(500).json({
             error: `problème d'insertion dans personne: ${err}`
             });
-        });
+        })
 }
 exports.edit = async (req, res, next) => {
     const id = parseInt(req.params.id);
