@@ -9,3 +9,12 @@ exports.updateStockArticle = (refArticle, qteStock) => {
         });
     });
 };
+
+exports.insertCommande = (commande) => {
+    return new Promise((resolve, reject) => {
+        const req = connection.query("INSERT INTO commande SET idUser = ?, dateCommande = SYSDATE()", [commande.idUser], (err, result) => {
+            console.log(req.sql)
+            err ? reject(err) : resolve(result);
+        });
+    });
+};

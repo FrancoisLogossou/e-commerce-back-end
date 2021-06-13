@@ -8,33 +8,10 @@ exports.getAllAdressesOfPersonne = (idPersonne) => {
         });
     });
 };
-exports.getOneAdresseOfPersonne = (idPersonne, idAdresse) => {
+
+exports.add = (idUser, idAdresse) => {
     return new Promise((resolve, reject) => {
-        const req = connection.query("SELECT a.id, rue, codePostal, ville FROM adresse a JOIN personne_adresse pa ON pa.id_adresse = a.id  WHERE num_personne = ? AND id_adresse = ?", [idPersonne, idAdresse], (err, result) => {
-            console.log(req.sql)
-            err ? reject(err) : resolve(result);
-        });
-    });
-};
-exports.add = (idPersonne, idAdresse) => {
-    return new Promise((resolve, reject) => {
-        const req = connection.query("INSERT INTO personne_adresse SET num_personne = ?, id_adresse = ?", [idPersonne, idAdresse], (err, result) => {
-            console.log(req.sql)
-            err ? reject(err) : resolve(result);
-        });
-    });
-};
-exports.deleteByIdPersonne = (idPersonne) => {
-    return new Promise((resolve, reject) => {
-        const req = connection.query("DELETE FROM personne_adresse WHERE num_personne = ?", idPersonne, (err, result) => {
-            console.log(req.sql)
-            err  ? reject(err) : resolve(result);
-        });
-    });
-};
-exports.deleteByIdAdresse = (idAdresse) => {
-    return new Promise((resolve, reject) => {
-        const req = connection.query("DELETE FROM personne_adresse WHERE id_adresse = ?", idAdresse, (err, result) => {
+        const req = connection.query("INSERT INTO adresseClient SET idUser = ?, idAdresse = ?", [idUser, idAdresse], (err, result) => {
             console.log(req.sql)
             err ? reject(err) : resolve(result);
         });

@@ -1,7 +1,7 @@
-const homeDao = require('../dao/home.dao');
+const nouveautesDao = require('../dao/nouveautes.dao');
 
-exports.getAll = (req, res, next) => {
-    homeDao.getAll()
+exports.getNouveautes = (req, res, next) => {
+    nouveautesDao.getNouveautes()
         .then(result => res.status(200).json(result))
         .catch(err => {
             return res.status(500).json({
@@ -9,5 +9,3 @@ exports.getAll = (req, res, next) => {
             })
         });
 }
-
-

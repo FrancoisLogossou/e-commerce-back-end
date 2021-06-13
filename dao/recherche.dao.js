@@ -8,20 +8,3 @@ exports.getArticlesBySearch = (param1) => {
         });
     });
 };
-
-/*
-INSERT INTO livre (   
-    numISBN,
-    titreLivre,
-    refArticle,
-    nomEditeur,
-    nomGenre) 
-VALUES 
-('978-2070584629', 'Harry Potter et Achref', 6, 'edition Pantheon', 'fantastique' );
-INSERT INTO auteurLivre (    
-    numISBN,
-    idAuteur) 
-VALUES 
-('978-2070584629',1);
-
-*/
