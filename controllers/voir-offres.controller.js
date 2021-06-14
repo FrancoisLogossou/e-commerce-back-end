@@ -2,7 +2,7 @@ const voirOffresDao = require('../dao/voir-offres.dao');
 
 exports.getAllByOptions = async (req, res, next) => {
     const option = req.params.option;
-    if (option == 'meilleures-ventes') {
+    if (option == 'meilleures ventes') {
         voirOffresDao.getAllMeilleuresVentes()
             .then(result => res.status(200).json(result))
             .catch(err => {
@@ -10,7 +10,7 @@ exports.getAllByOptions = async (req, res, next) => {
                     error: `problème de récupération de donnees: ${err}`
                 })
             });
-    } else  if (option == 'nouveautes') {
+    } else  if (option == 'nouveautés') {
         voirOffresDao.getAllNouveautes()
             .then(result => res.status(200).json(result))
             .catch(err => {
@@ -18,7 +18,7 @@ exports.getAllByOptions = async (req, res, next) => {
                     error: `problème de récupération de donnees: ${err}`
                 })
             });
-    } else  if (option == 'genre-formation') {
+    } else  if (option == 'genre formation') {
         voirOffresDao.getAllGenreFormation()
             .then(result => res.status(200).json(result))
             .catch(err => {
