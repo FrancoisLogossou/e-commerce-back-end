@@ -18,7 +18,7 @@ exports.getAllByOptions = async (req, res, next) => {
                     error: `problème de récupération de donnees: ${err}`
                 })
             });
-    } else  if (option == 'genre formation') {
+    } else  if (option == 'formation(s)') {
         voirOffresDao.getAllGenreFormation()
             .then(result => res.status(200).json(result))
             .catch(err => {
